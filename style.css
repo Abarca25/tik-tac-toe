@@ -1,0 +1,77 @@
+:root {
+    --ttt-board-color: beige;
+}
+
+body,
+html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+.ttt-board {
+    display: grid;
+    grid-template-columns: repeat(3,10rem);
+    grid-template-rows: repeat(3,10rem);
+    grid-template-areas: "cell-1 cell-2 cell-3"
+                         "cell-4 cell-5 cell-6"
+                         "cell-7 cell-8 cell-9";
+}
+
+.cell {
+    background-color: var(--ttt-board-color);
+    border: solid red 2px;
+    caret-color: transparent;
+}
+
+#cell-1 {
+    grid-area: cell-1;
+    border-left: transparent;
+    border-top: transparent;
+}
+
+#cell-2 {
+    grid-area: cell-2;
+    border-top: transparent;
+}
+
+#cell-3 {
+    grid-area: cell-3;
+    border-top: transparent;
+    border-right: transparent;
+}
+
+#cell-4 {
+    grid-area: cell-4;
+    border-left: transparent;
+}
+
+#cell-5 {
+    grid-area: cell-5
+}
+
+#cell-6 {
+    grid-area: cell-6;
+    border-right: transparent;
+}
+
+#cell-7 {
+    grid-area: cell-7;
+    border-left: transparent;
+    border-bottom: transparent;
+}
+
+#cell-8 {
+    grid-area: cell-8;
+    border-bottom: transparent;
+}
+
+#cell-9 {
+    grid-area: cell-9;
+    border-bottom: transparent;
+    border-right: transparent;
+}
