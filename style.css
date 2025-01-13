@@ -5,12 +5,14 @@
 body,
 html {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0;
     padding: 0;
     height: 100vh;
     width: 100vw;
+    background-color: rgb(94, 92, 92);
 }
 
 .ttt-board {
@@ -23,8 +25,14 @@ html {
 }
 
 .cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2rem;
+    font-size: 8rem;
     background-color: var(--ttt-board-color);
-    border: solid red 2px;
+    border: solid black 2px;
+    color: orange;
     caret-color: transparent;
 }
 
@@ -74,4 +82,13 @@ html {
     grid-area: cell-9;
     border-bottom: transparent;
     border-right: transparent;
+}
+
+.winner {
+    padding-top: 3rem;
+    height: 3rem;
+    width: 20rem;
+    font-size: 3rem;
+    text-align: center;
+    color: white;
 }

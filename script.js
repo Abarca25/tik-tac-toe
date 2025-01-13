@@ -1,11 +1,15 @@
 import Gameboard from "./gameboard.js";
-import Player from "./player.js";
-import Logic from "./logic.js";
 
+const gb = new Gameboard();
+const cell_choice = document.querySelectorAll(".cell");
 
-const cpu = new Player("CPU","TIC");
-const player = new Player("PLAYER","TAK");
-const game_logic = new Logic(cpu,player);
-const gb = new Gameboard(player,cpu,game_logic);
+if(gb.logic.playerTurn == true){
+    cell_choice.forEach((cell) => {
+        cell.addEventListener("click", (e) => {
+            gb.handleClick(e.target.id);
+            e.target.innerText = "O"
+            
+        })
+    })
+}
 
-gb.checkPlayerChoice(); // just testing if the pieces connect
