@@ -39,7 +39,9 @@ export default function Logic(player,cpu,player_choice){
     }
 
     this.callATie = () => {
-        console.log("TIE!")
+        const winnerElement = document.querySelector(".winner");
+        winnerElement.innerText = "IT'S A TIE";
+        throw new Error("WINNER DECIDED GAME OVER");
     }
 
     this.checkForExistingChoice = (cell_choice) => {
@@ -50,7 +52,7 @@ export default function Logic(player,cpu,player_choice){
         
         if (this.winnerDeclared == false && this.cellIsTaken.length == 9){
             this.callATie();
-            return;
+            throw new Error("TIE")
         }
 
         if (this.cellIsTaken.includes(cell_choice)) {
@@ -84,6 +86,13 @@ export default function Logic(player,cpu,player_choice){
     }
 
     this.winnerDecided = (player_name) => {
+        const lastCell = document.getElementById(`${this.cellIsTaken[this.cellIsTaken.length - 1]}`);
+        if(player_name == "CPU"){
+            null;
+        }
+        else {
+            lastCell.innerText = "O"
+        }
         let winner = document.querySelector(".winner");
         winner.innerText = `${player_name} is your winner!`;
         this.winnerDeclared = true;

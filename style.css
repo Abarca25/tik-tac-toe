@@ -15,6 +15,24 @@ html {
     background-color: rgb(94, 92, 92);
 }
 
+form {
+    padding-bottom: 1rem;
+}
+
+label {
+    font-size: 2rem;
+    color: white;
+    padding-right: 1rem;
+    align-self: center;
+}
+
+input {
+    border-radius: 5px;
+    border: transparent;
+    font-size: 1.5rem;
+    width: 12rem;
+}
+
 .ttt-board {
     display: grid;
     grid-template-columns: repeat(3,10rem);
