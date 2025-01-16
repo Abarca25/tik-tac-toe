@@ -1,14 +1,15 @@
-export default function Logic(player,cpu,player_choice){
-    this.player = player;
-    this.cpu = cpu;
-    this.player_choice = player_choice
-    this.playerTurn = true;
-    this.cpuTurn = false;
-    this.cellIsTaken = [];
-    this.winnerDeclared = false;
-    this.winnerName = ''
+export default class Logic{
+    constructor(player,cpu){
+        this.player = player;
+        this.cpu = cpu;
+        this.playerTurn = true;
+        this.cpuTurn = false;
+        this.cellIsTaken = [];
+        this.winnerDeclared = false;
+        this.winnerName = ''
+    }
 
-    this.winningPositions = () => {
+    winningPositions = () => {
         const validMovesArray = [["cell-1","cell-2","cell-3"],
                                  ["cell-4","cell-5","cell-6"],  // horziontal
                                  ["cell-7","cell-8","cell-9"],
@@ -22,7 +23,7 @@ export default function Logic(player,cpu,player_choice){
         return validMovesArray;
     }
 
-    this.cpuChoice = () => {
+    cpuChoice = () => {
         this.playerTurn = false;
         let cpu_choice_id = `cell-${Math.floor(Math.random() * 9) + 1}`;
         if(this.checkForExistingChoice(cpu_choice_id)){
@@ -38,13 +39,13 @@ export default function Logic(player,cpu,player_choice){
         
     }
 
-    this.callATie = () => {
+    callATie = () => {
         const winnerElement = document.querySelector(".winner");
         winnerElement.innerText = "IT'S A TIE";
         throw new Error("WINNER DECIDED GAME OVER");
     }
 
-    this.checkForExistingChoice = (cell_choice) => {
+    checkForExistingChoice = (cell_choice) => {
         if (this.winnerDeclared) {
             console.log("Game over! No more moves can be made.");
             return;
@@ -64,7 +65,7 @@ export default function Logic(player,cpu,player_choice){
     
     }
 
-    this.handleTurn = () => {
+    handleTurn = () => {
             this.checkPlayerChoice(this.player.player_choice,this.player.player_name);
             setTimeout(() => {
                 this.cpuChoice();
@@ -75,7 +76,7 @@ export default function Logic(player,cpu,player_choice){
         
     }
 
-    this.checkPlayerChoice = (player_choice,player_name) => {
+    checkPlayerChoice = (player_choice,player_name) => {
         let winning_positions = this.winningPositions();
         
         for(let i = 0; i < winning_positions.length; i++){
@@ -85,7 +86,7 @@ export default function Logic(player,cpu,player_choice){
         }
     }
 
-    this.winnerDecided = (player_name) => {
+    winnerDecided = (player_name) => {
         const lastCell = document.getElementById(`${this.cellIsTaken[this.cellIsTaken.length - 1]}`);
         if(player_name == "CPU"){
             null;

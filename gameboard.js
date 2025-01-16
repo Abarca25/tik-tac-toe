@@ -1,12 +1,14 @@
 import Player from "./player.js";
 import Logic from "./logic.js";
 
-export default function Gameboard(){
-    this.player_1 = new Player("Angel");
-    this.player_CPU = new Player("CPU");
-    this.logic = new Logic(this.player_1,this.player_CPU);
-
-    this.handleClick = (id) => {
+export default class Gameboard{
+    constructor (){
+        this.player_1 = new Player("Angel");
+        this.player_CPU = new Player("CPU");
+        this.logic = new Logic(this.player_1,this.player_CPU);
+    }
+    
+        handleClick = (id) => {
         if(this.logic.playerTurn == true){
             if(this.logic.checkForExistingChoice(id)){
                 throw new Error("Please pick another slot");
